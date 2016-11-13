@@ -98,7 +98,7 @@ class cluster_trading_algo:
                 string = "Neuron {} with cluster's size of {} :::: probability = {}".format(i,j,k)
                 print(string)
         
-    def evaluate(self, decision_boundary = 0.05, x_data = None, ret_rn = False, argret_rn = '[]'):
+    def evaluate(self, decision_boundary = 0.05, x_data = None, print_next_move = True, ret_rn = False, argret_rn = '[]'):
         
         save = False
         if type(x_data) == type(None):
@@ -135,7 +135,9 @@ class cluster_trading_algo:
         if save:
             self.trade_signal = ts
             self.specific_signal = ss
-        print('Next move: {}'.format(ss.iloc[-1]))
+            
+        if print_next_move:
+            print('Next move: {}'.format(ss.iloc[-1]))
         
         if ret_rn:
             return eval(argret_rn)
